@@ -9,7 +9,6 @@
 #include <iomanip>
 #include <climits>
 
-// Constructeurs / opérateurs / destructeur
 PmergeMe::PmergeMe(void) { }
 PmergeMe::PmergeMe(const PmergeMe &copy) { *this = copy; }
 PmergeMe &PmergeMe::operator=(const PmergeMe &copy) {
@@ -21,7 +20,6 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy) {
 }
 PmergeMe::~PmergeMe(void) { }
 
-// Parse input arguments
 void PmergeMe::parseInput(char **argv) {
     for (int i = 1; argv[i]; ++i) {
         std::string arg(argv[i]);
@@ -38,7 +36,6 @@ void PmergeMe::parseInput(char **argv) {
         throw std::runtime_error("Error");
 }
 
-// Affichage
 void PmergeMe::printSequence(const std::string &label, const std::vector<int> &sequence) const {
     std::cout << label;
     for (size_t i = 0; i < sequence.size(); ++i)
@@ -53,7 +50,6 @@ void PmergeMe::printSequence(const std::string &label, const std::deque<int> &se
     std::cout << std::endl;
 }
 
-// Génération de l'ordre Jacobsthal
 std::vector<size_t> PmergeMe::generateJacobsthalOrder(size_t n) {
     std::vector<size_t> order;
     size_t j1 = 1, j2 = 1;
@@ -77,7 +73,6 @@ std::vector<size_t> PmergeMe::generateJacobsthalOrder(size_t n) {
     return order;
 }
 
-// Tri Ford‑Johnson pour std::vector
 void PmergeMe::fordJohnsonSort(std::vector<int> &seq) {
     size_t n = seq.size();
     if (n <= 1) return;
@@ -106,7 +101,6 @@ void PmergeMe::fordJohnsonSort(std::vector<int> &seq) {
     seq = bigs;
 }
 
-// Tri Ford‑Johnson pour std::deque
 void PmergeMe::fordJohnsonSort(std::deque<int> &seq) {
     size_t n = seq.size();
     if (n <= 1) return;
@@ -135,7 +129,6 @@ void PmergeMe::fordJohnsonSort(std::deque<int> &seq) {
     seq = bigs;
 }
 
-// Mesure du temps
 void PmergeMe::sortAndMeasure(void) {
     std::vector<int> vCopy = _vector;
     std::deque<int> dCopy = _deque;
