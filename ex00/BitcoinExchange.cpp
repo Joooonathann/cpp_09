@@ -32,20 +32,20 @@ bool    BitcoinExchange::isValidDate(const std::string &date) const
     };
 
     if ((date.length() != 10) || (date[4] != '-') || (date[7] != '-'))
-        return false;
+        return (false);
 
     std::istringstream yearStream(date.substr(0, 4));
     std::istringstream monthStream(date.substr(5, 2));
     std::istringstream dayStream(date.substr(8, 2));
 
     if (!(yearStream >> y) || !(monthStream >> m) || !(dayStream >> d))
-        return false;
+        return (false);
 
     if ((y < 0) || (m < 1) || (m > 12) || (d < 1) || (d > 31))
-        return false;
+        return (false);
     if (d > daysInMonth[m - 1])
-        return false;
-    return true;
+        return (false);
+    return (true);
 }
 
 bool    BitcoinExchange::isValidValue(const std::string &value) const
